@@ -37,3 +37,29 @@
    | Learning Curve | Easier                  | Slightly harder (types, config)    |
    | Popularity     | Very High               | Growing fast                       |
    | Use Case       | Web, Node.js, scripting | Large apps, maintainable codebases |
+
+4. ### Playwright Kick start
+
+- Installation
+  - `npm init playwright@latest`
+- Running tests
+  - `npx playwright test`
+- Generating HTML Report
+  - `npx playwright show-report`
+- Running tests in headed modes
+  - `npx playwright test --headed`
+- Running tests in specific browser
+  - `npx playwright test --project=chromium`
+- Running specific test file
+  - `npx playwright test tests/example.spec.ts`
+- Running specific test inside a file
+  - `npx playwright test tests/example.spec.ts -g "test name"`
+- Running tests in debug mode
+  - `npx playwright test --debug`
+- Generating code using codegen
+  - `npx playwright codegen <website url>`
+- `npx playwright test --ui` to open the test runner UI
+- Fixtures
+  - page
+  - browser
+  - context
