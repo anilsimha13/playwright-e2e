@@ -11,34 +11,34 @@
    - Released in 2020
    - Playwright is an Open-source Node.js library
 
-2. ### Major Features
+#### Major Features
 
-   - Cross browser (_Chromium, Edge, Firefox, Webkit_)
-   - Cross Platform( _Windows, Mac, Linux_ )
-   - Cross Language (_Javascript, Typescript, Java, Python or C#_)
-   - Test Mobile Web
-   - API Testing
-   - Automatic Waiting
-   - Complex element handling
-   - Parallel execution
-   - Reports
-   - Inspector (_Helps debug tests by showing click points and verifying locators in real time_)
-   - Code Gen (_record and playback_)
-   - Tracing
+- Cross browser (_Chromium, Edge, Firefox, Webkit_)
+- Cross Platform( _Windows, Mac, Linux_ )
+- Cross Language (_Javascript, Typescript, Java, Python or C#_)
+- Test Mobile Web
+- API Testing
+- Automatic Waiting
+- Complex element handling
+- Parallel execution
+- Reports
+- Inspector (_Helps debug tests by showing click points and verifying locators in real time_)
+- Code Gen (_record and playback_)
+- Tracing
 
-3. ### Javascript vs Typescript
+#### Javascript vs Typescript
 
-   | Feature        | JavaScript              | TypeScript                         |
-   | -------------- | ----------------------- | ---------------------------------- |
-   | Type System    | Dynamic                 | Static (with type annotations)     |
-   | Compilation    | Interpreted             | Compiled to JavaScript             |
-   | Error Checking | Runtime                 | Compile-time                       |
-   | IDE Support    | Good                    | Excellent (with type info)         |
-   | Learning Curve | Easier                  | Slightly harder (types, config)    |
-   | Popularity     | Very High               | Growing fast                       |
-   | Use Case       | Web, Node.js, scripting | Large apps, maintainable codebases |
+| Feature        | JavaScript              | TypeScript                         |
+| -------------- | ----------------------- | ---------------------------------- |
+| Type System    | Dynamic                 | Static (with type annotations)     |
+| Compilation    | Interpreted             | Compiled to JavaScript             |
+| Error Checking | Runtime                 | Compile-time                       |
+| IDE Support    | Good                    | Excellent (with type info)         |
+| Learning Curve | Easier                  | Slightly harder (types, config)    |
+| Popularity     | Very High               | Growing fast                       |
+| Use Case       | Web, Node.js, scripting | Large apps, maintainable codebases |
 
-4. ### Playwright Kick start
+2. ### Playwright Kick start
 
 - Installation
   - `npm init playwright@latest`
@@ -63,3 +63,18 @@
   - page
   - browser
   - context
+  - Locator
+
+3. ### Understanding Playwright Locators(Built-in)
+
+   - page.getByRole() to locate by explicit and implicit accessibility attributes.
+   - HTML Element vs ARIA Role table [here](https://www.w3.org/TR/html-aria/#docconformance).
+
+   - page.getByText() to locate by text content/substring.
+   - page.getByLabel() to locate a form control by associated label's text.
+   - page.getByPlaceholder() to locate an input by placeholder.
+   - page.getByAltText() to locate an element, usually image, by its text alternative.
+   - page.getByTitle() to locate an element by its title attribute.
+   - page.getByTestId() to locate an element based on its data-testid attribute (other attributes can be configured).
+   - In playwright.config.ts we can configure testIdAttribute property to use custom attribute instead of data-testid.
+     example: `testIdAttribute: 'data-test'`
