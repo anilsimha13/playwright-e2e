@@ -70,11 +70,29 @@
    - page.getByRole() to locate by explicit and implicit accessibility attributes.
    - HTML Element vs ARIA Role table [here](https://www.w3.org/TR/html-aria/#docconformance).
 
-   - page.getByText() to locate by text content/substring.
-   - page.getByLabel() to locate a form control by associated label's text.
-   - page.getByPlaceholder() to locate an input by placeholder.
-   - page.getByAltText() to locate an element, usually image, by its text alternative.
-   - page.getByTitle() to locate an element by its title attribute.
-   - page.getByTestId() to locate an element based on its data-testid attribute (other attributes can be configured).
+   - `page.getByText()` to locate by text content/substring.
+   - `page.getByLabel()` to locate a form control by associated label's text.
+   - `page.getByPlaceholder()` to locate an input by placeholder.
+   - `page.getByAltText()` to locate an element, usually image, by its text alternative.
+   - `page.getByTitle()` to locate an element by its title attribute.
+   - `page.getByTestId()` to locate an element based on its data-testid attribute (other attributes can be configured).
    - In playwright.config.ts we can configure testIdAttribute property to use custom attribute instead of data-testid.
      example: `testIdAttribute: 'data-test'`
+
+4. ### Locating Elements using CSS Locators
+
+- CSS has two types of stratagies to identify the locators
+  - Relative
+  - Absolute
+- Different ways to create a CSS locatorsm(_Relative_)
+  - tag with id (_tag#id_)
+  - tag with class (_tag.class_)
+  - tag with any other attribute (_tag[attribute=value]_)
+  - tag with class and attribute (_tag.class[attribute=value]_)
+- `page.locator("CSS/Xpath)`
+- `body > div > *:nth-child(2)`
+- `body > div > *:first-child`
+- `body > div > *:last-child`
+- `p[class^="ma"]` (_^ starts with_)
+- `p[class$="ma"]`(_$ starts with_)
+- `p[class*="ma"]` (_\* contains_)
