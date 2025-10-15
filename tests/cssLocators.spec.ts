@@ -15,6 +15,4 @@ test("CSS selector with tag & id", async ({ page }) => {
 
   //tag with class and attribute
   await page.fill('input.search-box-text[value="Search store"]', "iPhone");
-
-  await page.pause();
 });
