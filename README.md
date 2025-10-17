@@ -67,7 +67,7 @@
 
 3. ### Understanding Playwright Locators(Built-in)
 
-   - page.getByRole() to locate by explicit and implicit accessibility attributes.
+   - `page.getByRole()` to locate by explicit and implicit accessibility attributes.
    - HTML Element vs ARIA Role table [here](https://www.w3.org/TR/html-aria/#docconformance).
 
    - `page.getByText()` to locate by text content/substring.
@@ -96,3 +96,31 @@
 - `p[class^="ma"]` (_^ starts with_)
 - `p[class$="ma"]`(_$ starts with_)
 - `p[class*="ma"]` (_\* contains_)
+
+5. ### Locating Elements using XPath, Operators and functions in XPath
+
+- Absolute xpath
+  - Starts from root
+- Relative xpath
+
+```js
+await page.fill('//input[@value="Search store"][@name="q"]', "iPhone");
+await page.click('//input[@type="submit" and @value="Search"]');
+await page.locator('//input[@type="submit" or @value="Search"]').click();
+```
+
+- **Functions**
+  - contains()
+    - `//a[contains(@href,'gift')]`
+  - starts-with()
+    - `//a[starts-with(@href,'/build')]`
+  - text()
+    - `//a[text()='Register']`
+    - `//a[normalize-space()='Register']`
+  - last()
+    - `//div[@class="column follow-us"]/ul/li[last()]`
+  - position()
+    - `//div[@class="column follow-us"]/ul/li[position()=2]`
+  - Dynamic Xpath
+    - use `OR` , `AND` , or above strategies
+    - e.g:`//button[@name="start" or @name="stop"]`
