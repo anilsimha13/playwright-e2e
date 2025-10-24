@@ -1,5 +1,17 @@
 # Playwright Framework - Typescript
 
+[1. What is Playwright?](#1-what-is-playwright)
+
+[2. Playwright Kick start](#2-playwright-kick-start)
+
+[3. Understanding Playwright Locators(Built-in)](#3-understanding-playwright-locatorsbuilt-in)
+
+[4. Locating Elements using CSS Locators](#4-locating-elements-using-css-locators)
+
+[5. Locating Elements using XPath, Operators and functions in XPath](#5-locating-elements-using-xpath-operators-and-functions-in-xpath)
+
+[6. Locating complex elements using Xpath Axes](#6-locating-complex-elements-using-xpath-axes)
+
 ## Interview POV
 
 1. ### What is Playwright?
@@ -124,3 +136,24 @@ await page.locator('//input[@type="submit" or @value="Search"]').click();
   - Dynamic Xpath
     - use `OR` , `AND` , or above strategies
     - e.g:`//button[@name="start" or @name="stop"]`
+
+6. ### Locating complex elements using Xpath Axes
+
+- XPath Axes are used to navigate through elements in an XML document relative to the current node.
+- Commonly used XPath Axes:
+  - `child`: Selects all child elements of the current node.
+    - `//div[@class='product-grid']/child::div`
+  - `parent`: Selects the parent element of the current node.
+    - `//a[@href='/register']/parent::li`
+  - `ancestor`: Selects all ancestor elements (parents, grandparents, etc.) of the current node.
+    - `//a[@href='/register']/ancestor::ul`
+  - `descendant`: Selects all descendant elements (children, grandchildren, etc.) of the current node.
+    - `//div[@class='product-grid']/descendant::a`
+  - `following-sibling`: Selects all sibling elements that come after the current node.
+    - `//h2[text()='Featured Products']/following-sibling::div`
+  - `preceding-sibling`: Selects all sibling elements that come before the current node.
+    - `//h2[text()='Featured Products']/preceding-sibling::div`
+  - `following`: Selects all elements in the document that come after the current node.
+    - `//a[@href='/register']/following::div`
+  - `preceding`: Selects all elements in the document that come before the current node.
+    - `//a[@href='/register']/preceding::div`
