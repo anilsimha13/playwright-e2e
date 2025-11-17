@@ -12,6 +12,8 @@
 
 [6. Locating complex elements using Xpath Axes](#6-locating-complex-elements-using-xpath-axes)
 
+[7. Playwright Actions-Inputbox, Checkbox & Radio buttons](#Playwright-Actions-Inputbox-Checkbox-Radio-buttons)
+
 ## Interview POV
 
 1. ### What is Playwright?
@@ -157,3 +159,61 @@ await page.locator('//input[@type="submit" or @value="Search"]').click();
     - `//a[@href='/register']/following::div`
   - `preceding`: Selects all elements in the document that come before the current node.
     - `//a[@href='/register']/preceding::div`
+
+7. ### Playwright Actions-Inputbox, Checkbox & Radio buttons
+
+**Input Field**
+
+- To fill any Inputbox we need to use following method
+  - `await userNameField.fill("Anil Simha")`
+- To get the Entered value in the input field
+  - `await userNameField.inputValue()`
+- To get the Attribute value of the Locator
+  - `const attributeValue: string | null = await userNameField.getAttribute("maxlength");`
+- To assert the Attribute value
+  - `await expect(userNameField).toHaveAttribute("maxlength", "15");`
+
+**Radio Buttons**
+
+```js
+await expect(genderMale).toBeVisible();
+(await genderMale.isChecked())
+  ? console.log("Male is checked")
+  : console.log("Male is unchecked");
+```
+
+**Checkbox**
+
+- Select by label
+  - `const sundayLable: Locator = page.getByLabel("Sunday");`
+- Check all by `elementHandles()` method
+
+```js
+//Method1
+const checkboxElements = await page
+  .locator('//input[@class="form-check-input" and @type="checkbox"]')
+  .elementHandles();
+
+for (const element of checkboxElements) {
+  await element.check();
+}
+```
+
+```js
+//Method2
+const days: string[] = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+const checkBoxs: Locator[] = days.map((day) => page.getByLabel(day));
+await expect(checkBoxs).toHaveLength(7);
+
+for (const checkbox of checkBoxs) {
+  await checkbox.check();
+}
+```
