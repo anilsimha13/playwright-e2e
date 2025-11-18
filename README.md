@@ -217,3 +217,47 @@ for (const checkbox of checkBoxs) {
   await checkbox.check();
 }
 ```
+
+8. ### Handle Dropdowns -Part1
+
+- Methods to select the dropdown elements (Single Select)
+
+```js
+const countryDropDown: Locator = page.locator("#country");
+await countryDropDown.selectOption("India"); //Visible Text
+await countryDropDown.selectOption({ value: "usa" }); //Attribute
+await countryDropDown.selectOption({ label: "Brazil" }); //label
+await countryDropDown.selectOption({ index: 2 }); //Index
+```
+
+- Count the dropdown elements
+
+```js
+const countryDropDownElements: Locator = page.locator("#country>option");
+const totalCountOfCountries = await countryDropDownElements.count();
+console.log(totalCountOfCountries);
+await expect(totalCountOfCountries).toBe(10);
+```
+
+- Contain the following option
+
+```js
+const optionsText: string[] = (
+  await countryDropDownElements.allTextContents()
+).map((text) => text.trim());
+console.log(optionsText);
+await expect(optionsText).toContain("Germany");
+for (let option of optionsText) {
+  console.log(option);
+}
+```
+
+- Methods to select the dropdown elements (Multi Select)
+
+```js
+const colorsElements: Locator = await page.locator("#colors");
+await colorsElements.selectOption(["Blue", "Green"]); //Visible
+await colorsElements.selectOption(["white"]); //Attribute
+await colorsElements.selectOption([{ value: "yellow" }, { value: "red" }]); //Value
+await colorsElements.selectOption([{ index: 1 }, { index: 3 }]); //Index
+```
