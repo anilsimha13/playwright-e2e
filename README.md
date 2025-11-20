@@ -14,6 +14,9 @@
 
 [7. Playwright Actions-Inputbox, Checkbox & Radio buttons](#Playwright-Actions-Inputbox-Checkbox-Radio-buttons)
 
+[8. Handle Dropdowns -Part1](Handle-Dropdowns-Part1)
+[9.Handle Dropdowns -Part2](Handle-Dropdowns-Part2)
+
 ## Interview POV
 
 1. ### What is Playwright?
@@ -260,4 +263,29 @@ await colorsElements.selectOption(["Blue", "Green"]); //Visible
 await colorsElements.selectOption(["white"]); //Attribute
 await colorsElements.selectOption([{ value: "yellow" }, { value: "red" }]); //Value
 await colorsElements.selectOption([{ index: 1 }, { index: 3 }]); //Index
+```
+
+9. ### Handle Dropdowns -Part2
+
+- Get all the suggested options
+  - `cmd+shift+p` on DOM and run `Emulate a focused page`
+
+```js
+//Auto Suggest Dropdowns
+await page.goto("https://www.flipkart.com/");
+const searchBoxLocator: Locator = page.locator(
+  '//input[@title="Search for Products, Brands and More"]'
+);
+await searchBoxLocator.fill("mobile");
+await page.waitForTimeout(10000);
+const options: Locator = page.locator("ul>li");
+const totalCount = await options.count();
+console.log(totalCount);
+for (let i = 0; i < totalCount; i++) {
+  const suggestedText = await options.nth(i).innerText();
+  if (suggestedText == "mobile under 7000") {
+    await options.nth(i).click();
+    break;
+  }
+}
 ```
