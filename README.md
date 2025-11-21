@@ -12,11 +12,13 @@
 
 [6. Locating complex elements using Xpath Axes](#6-locating-complex-elements-using-xpath-axes)
 
-[7. Playwright Actions-Inputbox, Checkbox & Radio buttons](#Playwright-Actions-Inputbox-Checkbox-Radio-buttons)
+[7. Playwright Actions-Inputbox, Checkbox & Radio buttons](#7-playwright-actions-inputbox-checkbox--radio-buttons)
 
-[8. Handle Dropdowns -Part1](Handle-Dropdowns-Part1)
-[9.Handle Dropdowns -Part2](Handle-Dropdowns-Part2)
-[10. Handle Static & Dynamic Tables](Handle-Static-Dynamic-Tables)
+[8. Handle Dropdowns -Part1](#8-handle-dropdowns--part1)
+
+[9. Handle Dropdowns -Part2](#9-handle-dropdowns--part2)
+
+[10. Handle Static & Dynamic Tables](#10-handle-static--dynamic-tables)
 
 ## Interview POV
 
@@ -164,7 +166,7 @@ await page.locator('//input[@type="submit" or @value="Search"]').click();
   - `preceding`: Selects all elements in the document that come before the current node.
     - `//a[@href='/register']/preceding::div`
 
-7. ### Playwright Actions-Inputbox, Checkbox & Radio buttons
+## 7. Playwright Actions-Inputbox, Checkbox & Radio buttons
 
 **Input Field**
 
@@ -222,7 +224,7 @@ for (const checkbox of checkBoxs) {
 }
 ```
 
-8. ### Handle Dropdowns -Part1
+## 8. Handle Dropdowns -Part1
 
 - Methods to select the dropdown elements (Single Select)
 
@@ -266,7 +268,7 @@ await colorsElements.selectOption([{ value: "yellow" }, { value: "red" }]); //Va
 await colorsElements.selectOption([{ index: 1 }, { index: 3 }]); //Index
 ```
 
-9. ### Handle Dropdowns -Part2
+## 9. Handle Dropdowns -Part2
 
 - Get all the suggested options
   - `cmd+shift+p` on DOM and run `Emulate a focused page`
@@ -291,9 +293,9 @@ for (let i = 0; i < totalCount; i++) {
 }
 ```
 
-10. ### Handle Static & Dynamic Tables
+## 10. Handle Static & Dynamic Tables
 
-    [tests/StaticTables.spec.ts](./tests/StaticTables.spec.ts)
+[tests/StaticTables.spec.ts](./tests/StaticTables.spec.ts)
 
 ```js
 const allRowData = await tableRows.all();
