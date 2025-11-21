@@ -16,6 +16,7 @@
 
 [8. Handle Dropdowns -Part1](Handle-Dropdowns-Part1)
 [9.Handle Dropdowns -Part2](Handle-Dropdowns-Part2)
+[10. Handle Static & Dynamic Tables](Handle-Static-Dynamic-Tables)
 
 ## Interview POV
 
@@ -287,5 +288,16 @@ for (let i = 0; i < totalCount; i++) {
     await options.nth(i).click();
     break;
   }
+}
+```
+
+10. ### Handle Static & Dynamic Tables
+
+    [tests/StaticTables.spec.ts](./tests/StaticTables.spec.ts)
+
+```js
+const allRowData = await tableRows.all();
+for (let rowdata of allRowData.slice(1)) {
+  console.log(await rowdata.locator("td").allInnerTexts());
 }
 ```
