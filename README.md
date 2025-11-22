@@ -295,8 +295,8 @@ for (let i = 0; i < totalCount; i++) {
 
 ## 10. Handle Static & Dynamic Tables
 
-[tests/StaticTables.spec.ts](./tests/StaticTables.spec.ts)
-[tests/DynamicTable.spec.ts](./tests/DynamicTable.spec.ts)
+- [tests/StaticTables.spec.ts](./tests/StaticTables.spec.ts)
+- [tests/DynamicTable.spec.ts](./tests/DynamicTable.spec.ts)
 
 ```js
 const allRowData = await tableRows.all();
