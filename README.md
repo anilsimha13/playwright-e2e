@@ -20,6 +20,8 @@
 
 [10. Handle Static & Dynamic Tables](#10-handle-static--dynamic-tables)
 
+[11. Handle Date Pickers](#11-handle-date-pickers)
+
 ## Interview POV
 
 1. ### What is Playwright?
@@ -303,4 +305,13 @@ const allRowData = await tableRows.all();
 for (let rowdata of allRowData.slice(1)) {
   console.log(await rowdata.locator("td").allInnerTexts());
 }
+```
+
+## 11. Handle Date Pickers
+
+- Using Fill Method
+- [./tests/jQueryDatePicker.spec.ts](./tests/jQueryDatePicker.spec.ts)
+
+```js
+await page.fill("#datepicker", "09/04/2025");
 ```
