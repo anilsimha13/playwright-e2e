@@ -315,3 +315,24 @@ for (let rowdata of allRowData.slice(1)) {
 ```js
 await page.fill("#datepicker", "09/04/2025");
 ```
+
+## 12. Handling Dialogs and Frames/iFrames
+
+_Topics Covered:_
+
+**Dialog**
+
+- By default Playwright dimisses the Alert
+  - [./tests/DialogsAlerts.spec.ts](./tests/DialogsAlerts.spec.ts)
+
+```js
+//Alert
+page.on("dialog", (dialog) => {
+  expect(dialog.message()).toContain("I am an alert box!");
+  expect(dialog.type()).toBe("alert");
+  dialog.accept();
+});
+```
+
+**iFrames**
+[./tests/Frame.spec.ts](./tests/Frame.spec.ts)
