@@ -22,6 +22,10 @@
 
 [11. Handle Date Pickers](#11-handle-date-pickers)
 
+[12. Handling Dialogs and Frames/iFrames](#12-handling-dialogs-and-framesiframess)
+
+[13. Playwright Browser Contexts, Handle Tabs and Popup Windows](#13-playwright-browser-contexts-handle-tabs-and-popup-windows)
+
 ## Interview POV
 
 1. ### What is Playwright?
@@ -336,3 +340,26 @@ page.on("dialog", (dialog) => {
 
 **iFrames**
 [./tests/Frame.spec.ts](./tests/Frame.spec.ts)
+
+## 13. Playwright Browser Contexts, Handle Tabs and Popup Windows
+
+_Topics Covered:_
+
+- Browser Context
+
+  - We can have multiple contexts for multiple users/apps for the same browser
+  - A way to operate the multiple independent browser sessions
+  - `page` is nothing but Tab, Window, Pop-up
+
+  ```js
+  const browser = await chromium.launch();
+  const context = await browser.newContext();
+  const page: Page = await context.newPage();
+  await page.goto("https://testautomationpractice.blogspot.com/");
+  ```
+
+  - Files
+  - [./tests/BrowserContext.spec.ts](./tests/BrowserContext.spec.ts)
+  - [./tests/AuthenticationPopup.spec.ts](./tests/AuthenticationPopup.spec.ts)
+  - [./tests/Popup.spec.ts](./tests/Popup.spec.ts)
+  - [./tests/Tabs.spec.ts](./tests/Tabs.spec.ts)
