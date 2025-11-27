@@ -363,3 +363,9 @@ _Topics Covered:_
   - [./tests/AuthenticationPopup.spec.ts](./tests/AuthenticationPopup.spec.ts)
   - [./tests/Popup.spec.ts](./tests/Popup.spec.ts)
   - [./tests/Tabs.spec.ts](./tests/Tabs.spec.ts)
+
+## 14. Handling Mouse Actions and Scrolling in playwright
+
+- [automaticScrolling.spec.ts](./tests/automaticScrolling.spec.ts)
+- [infiniteScrolling.spec.ts](./tests/infiniteScrolling.spec.ts)
+- [mouseActions.spec.ts](./tests/mouseActions.spec.ts)
