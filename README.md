@@ -26,6 +26,10 @@
 
 [13. Playwright Browser Contexts, Handle Tabs and Popup Windows](#13-playwright-browser-contexts-handle-tabs-and-popup-windows)
 
+[14. Handling Mouse Actions and Scrolling in playwright](#14-handling-mouse-actions-and-scrolling-in-playwright)
+
+[15. Handling Keyboard Actions, File Upload and Download in Playwright](#15-handling-keyboard-actions-file-upload-and-download-in-playwright)
+
 ## Interview POV
 
 1. ### What is Playwright?
@@ -369,3 +373,40 @@ _Topics Covered:_
 - [automaticScrolling.spec.ts](./tests/automaticScrolling.spec.ts)
 - [infiniteScrolling.spec.ts](./tests/infiniteScrolling.spec.ts)
 - [mouseActions.spec.ts](./tests/mouseActions.spec.ts)
+
+## 15. Handling Keyboard Actions, File Upload and Download in Playwright
+
+- page.keyboard
+  - insertText
+  - type
+  - down
+  - press
+  - up
+  - Control for windows
+  - Meta for Mac
+- File Uploads
+  - `setInputFiles`('path of the files for single file upload')
+  - setInputFiles(['file1','file2'])
+- File Downloads
+
+```js
+const [download] = await Promise.all([
+  page.waitForEvent("download"),
+  page.locator("#txtDownloadLink").click(),
+]);
+const downLoadPath = "testFiles/downdloadedfile.txt";
+await download.saveAs(downLoadPath);
+await page.waitForTimeout(5000);
+const fileDownloaded = fs.existsSync(downLoadPath);
+expect(fileDownloaded).toBeTruthy();
+fs.readFile("testFiles/downdloadedfile.txt", "utf8", (err, data) => {
+  console.log("Message from file", data);
+});
+if (fileDownloaded) {
+  fs.unlinkSync(downLoadPath);
+}
+```
+
+- [DownloadFile.spec.ts](./tests/DownloadFile.spec.ts)
+- [FileUpload.spec.ts](./tests/FileUpload.spec.ts)
+- [KeyboardActions.spec.ts](./tests/KeyboardActions.spec.ts)
