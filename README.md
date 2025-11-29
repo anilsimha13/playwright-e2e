@@ -30,6 +30,8 @@
 
 [15. Handling Keyboard Actions, File Upload and Download in Playwright](#15-handling-keyboard-actions-file-upload-and-download-in-playwright)
 
+[16. Handle Shadow DOM Elements, SSL, Proxy and Cookies](#16-handle-shadow-dom-elements-ssl-proxy-and-cookies)
+
 ## Interview POV
 
 1. ### What is Playwright?
@@ -410,3 +412,49 @@ if (fileDownloaded) {
 - [DownloadFile.spec.ts](./tests/DownloadFile.spec.ts)
 - [FileUpload.spec.ts](./tests/FileUpload.spec.ts)
 - [KeyboardActions.spec.ts](./tests/KeyboardActions.spec.ts)
+
+## 16. Handle Shadow DOM Elements, SSL, Proxy and Cookies
+
+- Shadow Root
+- Shadow Host
+- Shadow DOM
+- Only way to access shadow DOM elements is through `css selectors` and xpath will not work
+
+- **Browser Context** settings
+
+```js
+const browser = await chromium.launch({ headless: false });
+const context = await browser.newContext({
+  viewport: { width: 800, height: 800 },
+  locale: "en-US",
+  //proxy: { server: "PROXY URL" },
+  ignoreHTTPSErrors: true,
+});
+const page = await context.newPage();
+await page.goto("https://books-pwakit.appspot.com/");
+```
+
+**Cookies**
+
+```js
+const browser = await chromium.launch();
+const context = await browser.newContext();
+context.addCookies([
+  {
+    name: "mycookies",
+    value: "12345678",
+    url: "http://www.automationpractice.pl/index.php",
+  },
+  {
+    name: "mycookies1",
+    value: "123456789",
+    url: "http://www.automationpractice.pl/index.php",
+  },
+]);
+const page = await context.newPage();
+await page.goto("http://www.automationpractice.pl/index.php");
+const allTheCookies = await context.cookies();
+const retrivedCookies = allTheCookies.find((c) => c.name === "mycookies1");
+console.log(retrivedCookies);
+await context.clearCookies();
+```
